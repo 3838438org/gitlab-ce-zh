@@ -1,11 +1,11 @@
 # 支持的 tags 和对应的 `Dockerfile`
 
-- [`{BRANCH_1}`, `{TAG_1}` (*{BRANCH_1}/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/{BRANCH_1}/Dockerfile)
-- [`{BRANCH_2}`, `{TAG_2}` (*{BRANCH_2}/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/{BRANCH_2}/Dockerfile)
-- [`{BRANCH_3}`, `{TAG_3}` (*{BRANCH_3}/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/{BRANCH_3}/Dockerfile)
-- [`{BRANCH_4}`, `{TAG_4}` (*{BRANCH_4}/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/{BRANCH_4}/Dockerfile)
-- [`{BRANCH_5}`, `{TAG_5}`, `latest` (*{BRANCH_5}/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/{BRANCH_5}/Dockerfile)
-- [`testing` (*testing/Dockerfile*)](https://github.com/twang2218/gitlab-ce-zh/blob/master/testing/Dockerfile)
+- [`{BRANCH_1}`, `{TAG_1}` (*{BRANCH_1}/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/{BRANCH_1}/Dockerfile)
+- [`{BRANCH_2}`, `{TAG_2}` (*{BRANCH_2}/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/{BRANCH_2}/Dockerfile)
+- [`{BRANCH_3}`, `{TAG_3}` (*{BRANCH_3}/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/{BRANCH_3}/Dockerfile)
+- [`{BRANCH_4}`, `{TAG_4}` (*{BRANCH_4}/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/{BRANCH_4}/Dockerfile)
+- [`{BRANCH_5}`, `{TAG_5}`, `latest` (*{BRANCH_5}/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/{BRANCH_5}/Dockerfile)
+- [`testing` (*testing/Dockerfile*)](https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/testing/Dockerfile)
 
 [![Build Status](https://travis-ci.org/gitlab-ce-zh/gitlab-ce-zh.svg?branch=master)](https://travis-ci.org/gitlab-ce-zh/gitlab-ce-zh)
 [![](https://images.microbadger.com/badges/image/gitclub/gitlab-ce-zh.svg)](https://microbadger.com/images/gitclub/gitlab-ce-zh "Get your own image badge on microbadger.com")
@@ -14,19 +14,19 @@
 [Build Status]: https://travis-ci.org/twang2218/gitlab-ce-zh.svg?branch=master
 [Travis CI Link]: https://travis-ci.org/twang2218/gitlab-ce-zh/branches
 
-[Docker Hub Stars]: https://img.shields.io/docker/stars/twang2218/gitlab-ce-zh.svg
-[Docker Hub Pulls]: https://img.shields.io/docker/pulls/twang2218/gitlab-ce-zh.svg
-[Docker Image Layers]: https://images.microbadger.com/badges/image/twang2218/gitlab-ce-zh.svg
-[Docker Hub Link]: https://hub.docker.com/r/twang2218/gitlab-ce-zh/
+[Docker Hub Stars]: https://img.shields.io/docker/stars/gitclub/gitlab-ce-zh.svg
+[Docker Hub Pulls]: https://img.shields.io/docker/pulls/gitclub/gitlab-ce-zh.svg
+[Docker Image Layers]: https://images.microbadger.com/badges/image/gitclubg2218/gitlab-ce-zh.svg
+[Docker Hub Link]: https://hub.docker.com/r/gitclub/gitlab-ce-zh/
 
-[GitHub Stars]: https://img.shields.io/github/stars/twang2218/gitlab-ce-zh.svg?style=social&label=Stars
-[GitHub Link]: https://github.com/twang2218/gitlab-ce-zh/
+[GitHub Stars]: https://img.shields.io/github/stars/gitlab-ce-zh/gitlab-ce-zh.svg?style=social&label=Stars
+[GitHub Link]: https://github.com/gitlab-ce-zh/gitlab-ce-zh/
 
 [License]: https://img.shields.io/github/license/twang2218/gitlab-ce-zh.svg
-[License Link]: https://github.com/twang2218/gitlab-ce-zh/blob/master/LICENSE.md
+[License Link]: https://github.com/gitlab-ce-zh/gitlab-ce-zh/blob/master/LICENSE.md
 
 [Deploy to Docker Cloud]: https://img.shields.io/badge/deploy-docker_cloud-orange.svg?style=flat
-[Docker Cloud Link]: https://cloud.docker.com/stack/deploy/?repo=https://github.com/twang2218/gitlab-ce-zh
+[Docker Cloud Link]: https://cloud.docker.com/stack/deploy/?repo=https://github.com/gitlab-ce-zh/gitlab-ce-zh
 
 # GitLab 中文社区版
 
