@@ -1,6 +1,6 @@
-FROM gitlab/gitlab-ce:10.3.3-ce.0
+FROM gitlab/gitlab-ce:10.4.0-ce.0
 
-ENV GITLAB_VERSION=10-3-stable-zh
+ENV GITLAB_VERSION=10-4-stable-zh
 
 RUN set -xe \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -14,6 +14,8 @@ ENV TZ=Asia/Shanghai
 
 ENV GITLAB_DIR=/opt/gitlab/embedded/service/gitlab-rails
 ENV GITLAB_ZH_GIT=https://gitlab.com/xhang/gitlab.git
+ENV SOURCE_BRANCH=v10.4.0
+ENV TARGET_BRANCH=10-4-stable-zh
 
 # Reference:
 # * https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/config/software/gitlab-rails.rb
@@ -35,10 +37,11 @@ RUN set -xe \
     && cd gitlab \
     && export REVISION=$(cat ${GITLAB_DIR}/REVISION) \
     && export IGNORE_DIRS=':!spec :!features :!.gitignore :!locale :!app/assets/javascripts/locale' \
-    && git diff --diff-filter=d v10.3.3..origin/10-3-stable-zh -- . ${IGNORE_DIRS} > ../zh_CN.diff \
+    && git diff --diff-filter=d ${SOURCE_BRANCH}..origin/${TARGET_BRANCH} -- . ${IGNORE_DIRS} > ../zh_CN.diff \
     && echo " # Patching ..." \
     && patch -d ${GITLAB_DIR} -p1 < ../zh_CN.diff \
     && echo " # Copy locale files ..." \
+    && git checkout ${TARGET_BRANCH} \
     && cp -R locale ${GITLAB_DIR}/ \
     && echo " # Install missing Gem packages ..." \
     && cd ${GITLAB_DIR} \
@@ -49,7 +52,6 @@ RUN set -xe \
     && cp config/database.yml.postgresql config/database.yml \
     && cp config/secrets.yml.example config/secrets.yml \
     && rm -rf public/assets \
-    && rm -rf yarn.lock node_modules \
     && export NODE_ENV=production \
     && export RAILS_ENV=production \
     && export SETUP_DB=false \

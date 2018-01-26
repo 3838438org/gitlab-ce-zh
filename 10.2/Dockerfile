@@ -1,6 +1,6 @@
-FROM gitlab/gitlab-ce:10.2.5-ce.0
+FROM gitlab/gitlab-ce:10.2.7-ce.0
 
-ENV GITLAB_VERSION=v10.2.5
+ENV GITLAB_VERSION=v10.2.7
 
 RUN set -xe \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -14,6 +14,8 @@ ENV TZ=Asia/Shanghai
 
 ENV GITLAB_DIR=/opt/gitlab/embedded/service/gitlab-rails
 ENV GITLAB_ZH_GIT=https://gitlab.com/xhang/gitlab.git
+ENV SOURCE_BRANCH=${GITLAB_VERSION}
+ENV TARGET_BRANCH=${GITLAB_VERSION}-zh
 
 # Reference:
 # * https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/config/software/gitlab-rails.rb
@@ -34,10 +36,11 @@ RUN set -xe \
     && git clone ${GITLAB_ZH_GIT} gitlab \
     && cd gitlab \
     && export IGNORE_DIRS=':!spec :!features :!.gitignore :!locale :!app/assets/javascripts/locale' \
-    && git diff v10.2.5..v10.2.5-zh -- .  ${IGNORE_DIRS} > ../zh_CN.diff \
+    && git diff ${SOURCE_BRANCH}..${TARGET_BRANCH} -- .  ${IGNORE_DIRS} > ../zh_CN.diff \
     && echo " # Patching ..." \
     && patch -d ${GITLAB_DIR} -p1 < ../zh_CN.diff \
     && echo " # Copy locale files ..." \
+    && git checkout ${TARGET_BRANCH} \
     && cp -R locale ${GITLAB_DIR}/ \
     && echo " # Regenerating the assets" \
     && cd ${GITLAB_DIR} \

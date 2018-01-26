@@ -1,6 +1,6 @@
-FROM gitlab/gitlab-ce:9.5.10-ce.0
+FROM gitlab/gitlab-ce:10.4.0-ce.0
 
-ENV GITLAB_VERSION=v9.5.10
+ENV GITLAB_VERSION=v10.4.0
 
 RUN set -xe \
     && export DEBIAN_FRONTEND=noninteractive \
@@ -14,6 +14,8 @@ ENV TZ=Asia/Shanghai
 
 ENV GITLAB_DIR=/opt/gitlab/embedded/service/gitlab-rails
 ENV GITLAB_ZH_GIT=https://gitlab.com/xhang/gitlab.git
+ENV SOURCE_BRANCH=${GITLAB_VERSION}
+ENV TARGET_BRANCH=${GITLAB_VERSION}-zh
 
 # Reference:
 # * https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/config/software/gitlab-rails.rb
@@ -27,17 +29,18 @@ RUN set -xe \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
-    && export buildDeps='lsb-release patch nodejs python build-essential yarn=0.27.5-1 cmake' \
+    && export buildDeps='lsb-release patch nodejs python build-essential yarn cmake' \
     && apt-get install -yqq $buildDeps \
     && echo " # Generating translation patch ..." \
     && cd /tmp \
     && git clone ${GITLAB_ZH_GIT} gitlab \
     && cd gitlab \
     && export IGNORE_DIRS=':!spec :!features :!.gitignore :!locale :!app/assets/javascripts/locale' \
-    && git diff v9.5.10..v9.5.10-zh -- .  ${IGNORE_DIRS} > ../zh_CN.diff \
+    && git diff ${SOURCE_BRANCH}..${TARGET_BRANCH} -- .  ${IGNORE_DIRS} > ../zh_CN.diff \
     && echo " # Patching ..." \
     && patch -d ${GITLAB_DIR} -p1 < ../zh_CN.diff \
     && echo " # Copy locale files ..." \
+    && git checkout ${TARGET_BRANCH} \
     && cp -R locale ${GITLAB_DIR}/ \
     && echo " # Regenerating the assets" \
     && cd ${GITLAB_DIR} \
